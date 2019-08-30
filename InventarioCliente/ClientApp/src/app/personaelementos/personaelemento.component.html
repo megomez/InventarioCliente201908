@@ -1,0 +1,37 @@
+<div class="container pb-5 pt-3">
+  <a [routerLink]='["/personaelementos/ingresar"]' class="btn btn-primary">Asignar elementos</a>
+</div>
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th>Elemento</th>
+      <th>Persona asignada</th>
+      <th>Observación de asignación</th>
+      <th>Fecha de asignación</th>
+      <th>Observación de retiro</th>
+      <th>Fecha de retiro</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let personaElemento of personaElementoService.personaElementoList">
+      <td>{{ personaElemento.elemento }}</td>
+      <td>{{ personaElemento.persona }}</td>
+      <td>{{ personaElemento.observacionAsignacion }}</td>
+      <td>{{ personaElemento.fechaAsignacion | date : "dd/MM/y" }}</td>
+      <td>{{ personaElemento.observacionRetiro }}</td>
+      <td>{{ personaElemento.fechaRetiro | date : "dd/MM/y" }}</td>
+      <td style="width: 200px;">
+        <a class="btn btn-danger mr-3" href="personas/editar?id={{ personaElemento.id }}">Desasignar</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="form-group pt-3">
+  <div class="row">
+    <div class="col-md-12 text-right">
+      <a [routerLink]='["/"]' class="btn btn-secondary mr-3">Volver</a>
+      <a [routerLink]='["/personaelementos/ingresar"]' class="btn btn-primary">Asignar elementos</a>
+    </div>
+  </div>
+</div>

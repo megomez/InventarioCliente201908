@@ -1,0 +1,90 @@
+<div class="container">
+  <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-6">
+          <label>Área de la persona (*)</label>
+          <select class="custom-select" #areaId="ngModel" name="areaId" [(ngModel)]="formPersona.areaId" required="required">
+            <option value="" selected>Seleccione...</option>
+            <option *ngFor="let area of personaService.areaService.areaList" [value]="area.id">
+              {{ area.nombre }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-6">
+          <label>Tipo de documento (*)</label>
+          <select class="custom-select" #tdocumentoId="ngModel" name="tdocumentoId" [(ngModel)]="formPersona.tdocumentoId" required="required">
+            <option value="" selected>Seleccione...</option>
+            <option *ngFor="let tipoDocumento of personaService.tdocumentoService.tdocumentoList" [value]="tipoDocumento.id">
+              {{ tipoDocumento.sigla }} - {{ tipoDocumento.nombre }}
+            </option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label>Número de documento (*)</label>
+          <input type="text" placeholder="Ingrese el documento de la persona..." class="form-control" #documento="ngModel" name="documento" [(ngModel)]="formPersona.documento" required="required" />
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-6">
+          <label>Primer Nombre (*)</label>
+          <input type="text" placeholder="Ingrese el primer nombre de la persona..." class="form-control" #primerNombre="ngModel" name="primerNombre" [(ngModel)]="formPersona.primerNombre" required="required" />
+        </div>
+        <div class="col-md-6">
+          <label>Segundo Nombre</label>
+          <input type="text" placeholder="Ingrese el segundo nombre de la persona..." class="form-control" #segundoNombre="ngModel" name="segundoNombre" [(ngModel)]="formPersona.segundoNombre" />
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-6">
+          <label>Primer Apellido (*)</label>
+          <input type="text" placeholder="Ingrese el primer apellido de la persona..." class="form-control" #primerApellido="ngModel" name="primerApellido" [(ngModel)]="formPersona.primerApellido" required="required" />
+        </div>
+        <div class="col-md-6">
+          <label>Segundo Apellido</label>
+          <input type="text" placeholder="Ingrese el segundo apellido de la persona..." class="form-control" #segundoApellido="ngModel" name="segundoApellido" [(ngModel)]="formPersona.segundoApellido" />
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-6">
+          <label>Fecha de nacimiento (*)</label>
+          <input type="date" placeholder="DD/MM/AAAA" class="form-control" #fechaNacimiento="ngModel" name="fechaNacimiento" [(ngModel)]="formPersona.fechaNacimiento" required="required" />
+        </div>
+        <div class="col-md-6">
+          <label>Dirección</label>
+          <input type="text" placeholder="Ingrese la dirección de residencia..." class="form-control" #direccion="ngModel" name="direccion" [(ngModel)]="formPersona.direccion" />
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-6">
+          <label>Teléfono</label>
+          <input type="text" placeholder="Ingrese el teléfono de contacto..." class="form-control" #telefono="ngModel" name="telefono" [(ngModel)]="formPersona.telefono" />
+        </div>
+        <div class="col-md-6">
+          <label>Correo electrónico</label>
+          <input type="email" placeholder="Ingrese correo electrónico de la persona..." class="form-control" #email="ngModel" name="email" [(ngModel)]="formPersona.email" [email]="true" />
+        </div>
+      </div>
+    </div>
+    <div class="form-group pt-3">
+      <div class="row">
+        <div class="col-md-12 text-right">
+          <a [routerLink]='["/personas"]' class="btn btn-secondary mr-3">Volver</a>
+          <button type="submit" [disabled]="form.invalid" class="btn btn-success">Registrar</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,62 @@
+<div class="container">
+  <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-12">
+          <label>Tipo de elemento (*)</label>
+          <select class="custom-select" #telementoId="ngModel" name="telementoId" [(ngModel)]="formElemento.telementoId" required="required">
+            <option value="" selected>Seleccione...</option>
+            <option *ngFor="let telemento of elementoService.telementoService.telementoList" [value]="telemento.id">
+              {{ telemento.nombre }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-12">
+          <label>Descripción del elemento (*)</label>
+          <textarea placeholder="Ingrese la descripción del elemento..." class="form-control" #descripcion="ngModel" name="descripcion" [(ngModel)]="formElemento.descripcion" required="required"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-6">
+          <label>Valor de compra (*)</label>
+          <input type="number" placeholder="Ingrese el valor de compra del elemento..." class="form-control" #valorCompra="ngModel" name="valorCompra" [(ngModel)]="formElemento.valorCompra" required="required" />
+        </div>
+        <div class="col-md-6">
+          <label>Fecha de compra (*)</label>
+          <input type="date" placeholder="DD/MM/AAAA" class="form-control" #fechaCompra="ngModel" name="fechaCompra" [(ngModel)]="formElemento.fechaCompra" required="required" />
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-md-6">
+          <label>Serial (*)</label>
+          <input type="text" placeholder="Ingrese el serial del elemento..." class="form-control" #serial="ngModel" name="serial" [(ngModel)]="formElemento.serial" required="required" />
+        </div>
+        <div class="col-md-6">
+          <label>Estado (*)</label>
+          <select class="custom-select" #estado="ngModel" name="estado" [(ngModel)]="formElemento.estado" required="required">
+            <option value="" selected disabled>Seleccione...</option>
+            <option value="Sin asignar">Sin asignar</option>
+            <option value="Dañado">Dañado</option>
+            <option value="Retirado">Retirado</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="form-group pt-3">
+      <div class="row">
+        <div class="col-md-12 text-right">
+          <a [routerLink]='["/elementos"]' class="btn btn-secondary mr-3">Volver</a>
+          <button type="submit" [disabled]="form.invalid" class="btn btn-success">Registrar</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
